@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="it">
+	<head>
+		<title >La Torre di Hanoi</title>
+		<link rel="icon" type="image/png" href="hanoiIcon.png"> <!-- Inserimento della favicon vicino al titolo -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">	<!-- Integrazione CSS Bootstrap -->
+		<link rel="stylesheet" href="Style.css" > <!-- Inserire al posto di mystyle.css il nome del file del proprio CSS -->
+		
+	</head>
+	<body>
+		<header>
+			<!-- Intestazione -->
+			<center><h1 style="color: black">La Torre di Hanoi</h1></center>
+		</header>
+		<main>
+			<!-- Corpo -->
+			
+			<div class="container">
+				<div class="col-12">
+					<p style="color: black; margin-top: 30px;">La Torre di Hanoi è un gioco matematico. Il gioco si svolge su una piattaforma con tre pali. Nel primo palo sono impilati dei dischi di dimensioni diverse in ordine crescente, dalla più grande in basso alla più piccola in alto. Con ogni mossa si può spostare un solo disco potendolo sfilare solo se non ci sono elementi sopra di esso e lo si può impilare su un palo solo se sotto di esso non ci sono elementi più piccoli. <br>Prova anche tu a risolvere questo rompicapo.</p>
+					</div>
+
+					<div>
+						<center><span style="color: black; border: 1px double green;">Numero Mosse:</span>
+						<span id="contamosse" style="color: black;">0</span></center>
+					</div>
+					
+					<legend style="color: red; font-family: papyrus;"><strong>DIVERTITI!</strong></legend><fieldset style="border: 2px double green;">
+				<div class="row" style="padding: 4%; margin-top: 50px;">
+					<div id="pole1" class="col-4 pole">						
+					</div>
+					<div id="pole2" class="col-4 pole">
+					</div>
+					<div id="pole3" class="col-4 pole">
+					</div>
+				</div>
+				<div class="row" style="margin-top:20px; padding: 3%;">
+					<div class="col-4">
+						<center><button id="btn1" class="btn btn-primary" onclick="actionPole(1)">Prendi</button></center>
+					</div>
+					<div class="col-4">
+						<center><button id="btn2" class="btn btn-primary" onclick="actionPole(2)">Prendi</button></center>
+						<br>
+						
+						<br>
+						
+					</div>
+					<div class="col-4">
+						<center><button id="btn3" class="btn btn-primary" onclick="actionPole(3)">Prendi</button></center>
+					</div>
+					
+				</div>
+				<div class="row">
+					<div class="col-4"></div>
+					<div id="myHand" class="col-4"></div>
+					<div class="col-4"></div>
+				</div>
+			</div>
+			</fieldset>
+
+			<div class="row">
+				<div class="col-5">
+					<br>
+					<center><button class="btn btn-primary" onclick="resetta()">Resetta</button></center>
+				</div>
+				<div class="col-2">
+					<center><div id="timer" style="color: black; padding: 2%;">00:00:00</div>
+					<button class="btn btn-primary" onclick="startTimer()">Avvia Timer</button>
+					<button class="btn btn-primary" onclick="stopTimer()">Ferma Timer</button></center>
+				</div>
+				<div class="col-5">
+					 <br>
+					<center><button class="btn btn-primary" onclick="addDisk(1,2,3)">Aggiungi Disco</button></center>
+				</div>
+			</div>
+			
+
+
+
+
+		<footer>
+			<!-- Pedice -->
+			<center><p style="color: black;" class="footer">&copy; Francesco Rinaldi</p></center>
+		</footer>
+	</body>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> <!-- Integrazione Javascript Bootstrap -->
+	<script>
+		var pole1 = [1,2,3,4];
+		var pole2 = [];
+		var pole3 = [];
+		var mano = 0;
+		
+		drawScene();
+		
+		function drawScene(){
+			drawPoles();
+			drawHand();
+			checkButtons();
+		}
+		
+		function drawPoles(){
+			for(let i=1;i<4;i++){
+				drawPole(getPole(i), getDivPole(i));
+			}
+		}
+		
+		function getDivPole(n){
+			return document.getElementById("pole"+n);
+		}
+		
+		function drawPole(pole, div){
+			div.innerHTML = "";
+			for(let i=0; i<pole.length; i++){
+				div.innerHTML+=drawDisk(pole[i]);
+			}
+		}
+		
+		function checkButtons(){
+			for(let i=1;i<4;i++)
+				checkButton(i);
+		}	
+
+		function getPole(n){
+			switch(n){
+				case 1: return pole1;
+				case 2: return pole2;
+				case 3: return pole3;
+			}
+		}
+		
+		function checkButton(n){
+			let button = document.getElementById("btn" + n);
+			let pole = getPole(n);
+			if(mano==0){
+				button.innerText = "Prendi";
+				button.disabled = pole.length == 0;
+			} else {
+				button.innerText = "Metti";				
+				button.disabled = pole.length > 0 ? pole[0] < mano : false;			
+			}
+		}
+		
+		function drawHand(){
+			let handDiv = document.getElementById("myHand");
+			handDiv.innerHTML = drawDisk(mano);
+		}
+		
+		function actionPole(n){
+			if(mano==0){
+				mano = getPole(n).shift();
+			} else {
+				getPole(n).unshift(mano);
+				mano = 0;
+			}
+			drawScene();
+		}
+		
+		function getColor(dimension){
+			let color = "#FF0000";
+			switch(dimension){
+				case 1: color = "#000000"; break;
+				case 2: color = "#0000FF"; break;		
+				case 3: color = "#00FF00"; break;
+			}
+			return color;
+		}
+		
+		function drawDisk(dimension){
+			let color = getColor(dimension);
+			return '<div class="disk" style="background-color:'+color+'; width:'+dimension*10+'%;"></div>';
+		}
+
+		let IntervalloTimer;
+        let secondi = 0;
+        let minuti = 0;
+        let ore = 0;
+
+        function startTimer() {
+			IntervalloTimer = setInterval(updateTimer, 1000);
+        }
+
+        function stopTimer() {
+            clearInterval(IntervalloTimer);
+			
+        }
+
+        function updateTimer() {
+            secondi++;
+            if (secondi === 60) {
+                secondi = 0;
+                minuti++;
+                if (minuti === 60) {
+                    minuti = 0;
+                    ore++;
+                }
+            }
+
+            const formattedTime = pad(ore) + ":" + pad(minuti) + ":" + pad(secondi);
+            document.getElementById("timer").innerText = formattedTime;
+        }
+
+        function pad(value) {
+            return String(value).padStart(2, "0");
+        }
+
+
+		let nMosse = 0;
+		const mossa = document.getElementById("contamosse");
+
+		function incrementaMosse(){
+			nMosse++;
+			aggiornaContatore();
+
+		}
+
+		function aggiornaContatore(){
+			mossa.innerText = nMosse;
+		}
+		
+
+		document.getElementById("btn1").addEventListener("click", function() {
+			incrementaMosse();
+			
+        });
+
+		document.getElementById("btn2").addEventListener("click", function() {
+			incrementaMosse();
+			
+        });
+
+		document.getElementById("btn3").addEventListener("click", function() {
+			incrementaMosse();
+			
+        });
+
+		function addDisk(poleIndex) {
+        const pole = getPole(poleIndex);
+        const newDiskSize = pole.length > 0 ? pole[0] - 1 : 1; // Determina la dimensione del nuovo disco
+        pole.unshift(newDiskSize); // Inserisce il nuovo disco all'inizio dell'array
+        drawScene(); // Aggiorna la scena
+		
+    }
+
+	function resetta() {
+    // Resetta il timer
+    clearInterval(IntervalloTimer);
+    secondi = 0;
+    minuti = 0;
+    ore = 0;
+    document.getElementById("timer").innerText = "00:00:00";
+
+    // Resetta il numero di mosse
+    nMosse = 0;
+    aggiornaContatore();
+
+    // Riporta i dischi alla configurazione iniziale
+    pole1 = [1, 2, 3, 4];
+    pole2 = [];
+    pole3 = [];
+    drawScene(); // Aggiorna la scena
+}
+	</script>
+</html>

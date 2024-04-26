@@ -1,0 +1,22 @@
+.footer{
+    
+    bottom: 0;
+    width: 100%;
+}
+
+.disk {
+    height: 30px;
+    border-radius: 20%;    
+}
+
+.pole {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+
+
+
+
