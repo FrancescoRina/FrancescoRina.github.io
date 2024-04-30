@@ -1,0 +1,130 @@
+<html>
+    <head>
+        <title>L'Enciclopedia del samurai</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="Style.css">
+        <link rel="shortcut icon" href="Loghi/Favicon.png" type="image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+        
+        
+
+        <nav class="navbar bg-dark  border-body" data-bs-theme="dark">
+            <nav class="navbar">
+                <div >
+                  <a class="navbar-brand" href="#">
+                    <img src="Loghi/Favicon.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                    L'ENCICLOPEDIA DEL SAMURAI
+                  </a>
+                  <a class="navbar-brand" href="Storia.html">
+                      Storia
+                  </a>
+                  <a class="navbar-brand" href="Maestri.html">
+                      Maestri
+                  </a>
+                </div>
+              </nav>
+          </nav>
+
+          <p>Scopri tutta la storia della figura del samurai consultando quest'enciclopledia digitale. Inizia subito creando un account!</p>
+
+          <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="height: 50%; width: 45%; top: 20%; left: 900px; ">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="img/1329178.png" class="d-block w-100" alt="Samurai">
+              </div>
+              <div class="carousel-item">
+                <img src="img/red-light-darkness-katana-wallpaper-preview.jpg" class="d-block w-100" alt="Samurai con katana">
+              </div>
+              <div class="carousel-item">
+                <img src="img/Samurai-casco.jpg" class="d-block w-100" alt="Samurai con armatura">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+            <script>
+              $(document).ready(function(){
+                $('#mioCarousel').carousel();
+              });
+            </script>
+          </div>
+
+          <div class="form-container" style="bottom: 50%; left: 10%; top: -35%;">
+            <p class="title">Registrati/Accedi</p>
+            <form class="form">
+              <input type="text" class="input" placeholder="Nome">
+              <input type="email" class="input" placeholder="Email">
+              <input type="password" class="input" placeholder="Password">
+              <button class="form-btn">Crea account</button>
+            </form>
+            <p class="sign-up-label">
+              Hai già un account?<span class="sign-up-link">Accedi</span>
+            </p>
+            <div class="buttons-container">
+              <div class="apple-login-button">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" class="apple-icon" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M747.4 535.7c-.4-68.2 30.5-119.6 92.9-157.5-34.9-50-87.7-77.5-157.3-82.8-65.9-5.2-138 38.4-164.4 38.4-27.9 0-91.7-36.6-141.9-36.6C273.1 298.8 163 379.8 163 544.6c0 48.7 8.9 99 26.7 150.8 23.8 68.2 109.6 235.3 199.1 232.6 46.8-1.1 79.9-33.2 140.8-33.2 59.1 0 89.7 33.2 141.9 33.2 90.3-1.3 167.9-153.2 190.5-221.6-121.1-57.1-114.6-167.2-114.6-170.7zm-105.1-305c50.7-60.2 46.1-115 44.6-134.7-44.8 2.6-96.6 30.5-126.1 64.8-32.5 36.8-51.6 82.3-47.5 133.6 48.4 3.7 92.6-21.2 129-63.7z"></path>
+                </svg>
+                <span>Accedi con Apple</span>
+              </div>
+              <div class="google-login-button">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" version="1.1" x="0px" y="0px" class="google-icon" viewBox="0 0 48 48" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                  <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12
+        c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24
+        c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"></path>
+                  <path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657
+        C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"></path>
+                  <path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36
+        c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"></path>
+                  <path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571
+        c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"></path>
+                </svg>
+                <span>Accedi con Google</span>
+              </div>
+            </div>
+          </div>
+       
+          
+        <header>
+            
+            
+
+        </header>
+        
+            <main>
+                
+
+            </main>
+            
+
+                <footer class="bg-body-dark ">
+                  
+                    <!-- Copyright -->
+                    <div class="text-center " style="background-color: black">
+                     
+                      <a style="color: white"> © 2023 Copyright Francesco Rinaldi </a>
+                    </div>
+                    <!-- Copyright -->
+                  </footer>
+                  
+                  
+
+
+            
+        
+    </body>
+</html>
